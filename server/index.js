@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
+const postRoutes = require("./routes/post");
+
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use("/api/post", postRoutes);
 
 mongoose.connect(process.env.DB_URL);
 
