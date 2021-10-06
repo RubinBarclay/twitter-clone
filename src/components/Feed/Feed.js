@@ -3,8 +3,6 @@ import "./Feed.css";
 import Post from "../Post/Post";
 import TweetBox from "../TweetBox/TweetBox";
 import FlipMove from "react-flip-move";
-// import db from "../../firebase";
-// // import { doc, onSnapshot } from "firebase/firestore";
 
 const dummyData = [
   {
@@ -71,14 +69,6 @@ const dummyData = [
 
 function Feed() {
   const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    // I think this is the old way of listening to collection,
-    // You probably need to do something like this: https://firebase.google.com/docs/firestore/query-data/listen
-    // db.collection("posts").onSnapshot((snapshot) =>
-    //   setPosts(snapshot.docs.map((doc) => doc.data()))
-    // );
-  }, []);
 
   return (
     <div className="feed">
