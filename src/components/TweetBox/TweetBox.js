@@ -2,7 +2,7 @@ import React from "react";
 import "./TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
 
-function TweetBox({ dummyData, setPosts }) {
+function TweetBox() {
   return (
     <div className="tweetBox">
       <form>
@@ -14,12 +14,7 @@ function TweetBox({ dummyData, setPosts }) {
           className="tweetBox__imageInput"
           placeholder="Optional: Enter Image URL"
         />
-        <Button
-          className="tweetBox__tweetButton"
-          onClick={() => setPosts((posts) => [dummyData.pop(), ...posts])}
-        >
-          Tweet
-        </Button>
+        <Button className="tweetBox__tweetButton">Tweet</Button>
       </form>
     </div>
   );
