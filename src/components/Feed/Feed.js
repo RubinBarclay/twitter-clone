@@ -27,7 +27,7 @@ function Feed() {
       <div className="feed__header">
         <h2>Home</h2>
       </div>
-      <TweetBox />
+      <TweetBox setPosts={setPosts} />
       <FlipMove>
         {posts.map((post) => (
           <Post
