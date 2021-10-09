@@ -1,0 +1,53 @@
+.infoModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 35vw;
+  height: 40vh;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  z-index: 500;
+}
+
+.infoModal > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signUp__inputGroup {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  height: 62px;
+}
+
+.signUp__inputGroup__placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+}
+
+.signUp__inputGroup__counter {
+}
+
+.signUp__inputGroup > input {
+}
+
+.infoModal__submit {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+}
