@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+*:hover,
+*:focus {
+  outline: 0 !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

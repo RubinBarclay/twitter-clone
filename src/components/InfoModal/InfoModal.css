@@ -8,37 +8,23 @@
   height: 40vh;
   padding: 20px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 16px;
   z-index: 500;
 }
 
-.infoModal > form {
+.infoModal__wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.infoModal__heading {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.infoModal__form {
   display: flex;
   flex-direction: column;
-}
-
-.signUp__inputGroup {
-  position: relative;
-  display: block;
-  width: 100%;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  height: 62px;
-}
-
-.signUp__inputGroup__placeholder {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: #888;
-}
-
-.signUp__inputGroup__counter {
-}
-
-.signUp__inputGroup > input {
 }
 
 .infoModal__submit {

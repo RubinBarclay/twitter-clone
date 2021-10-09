@@ -1,30 +1,15 @@
 import { Button } from "@material-ui/core";
-import { useState } from "react";
+import TextInput from "./TextInput/TextInput";
 import "./InfoModal.css";
 
 function InfoModal({ setShowModal }) {
-  const [username, setUsername] = useState("");
-  const [displayName, setDisplayName] = useState("");
-
   return (
     <div className="infoModal">
-      <h2>Create a temporary user</h2>
-      <form>
-        <label htmlFor="username">
-          <div className="signUp__inputGroup">
-            <span className="signUp__inputGroup__placeholder">Username</span>
-            {/*
-            <span className="signUp__inputGroup__counter">{username.length} / 20</span>
-            <input
-              type="text"
-              id="username"
-              maxlength="20"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            */}
-          </div>
-        </label>
-        {/*
+      <div className="infoModal__wrapper">
+        <h2 className="infoModal__heading">Create a temporary user</h2>
+        <form className="infoModal__form">
+          <TextInput />
+          {/*
         <div className="signUp__inputGroup">
           <label htmlFor="displayName">Display name</label>
           <input type="text" id="displayName" placeholder="unicornLover89" />
@@ -45,15 +30,16 @@ function InfoModal({ setShowModal }) {
           <input type="radio" name="verified" id="no" value="no" />
         </div>
         */}
-        <Button
-          variant="outlined"
-          className="infoModal__submit"
-          fullWidth
-          onClick={() => setShowModal(false)}
-        >
-          Start Tweeting!
-        </Button>
-      </form>
+          <Button
+            variant="outlined"
+            className="infoModal__submit"
+            fullWidth
+            onClick={() => setShowModal(false)}
+          >
+            Start Tweeting!
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }
