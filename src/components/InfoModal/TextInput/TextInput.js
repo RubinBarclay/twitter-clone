@@ -1,35 +1,51 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./TextInput.css";
 
-function TextInput() {
-  const [username, setUsername] = useState("");
-  const [displayName, setDisplayName] = useState("");
-
-  const [focused, setFocused] = useState("");
+function TextInput({ text, setText, placeholder }) {
+  const [focused, setFocused] = useState(false);
+  const offClickRef = useRef();
 
   const focusInput = (field) => {
     switch (field) {
-      case "username":
+      case "text":
       case "displayName":
         setFocused("active");
     }
   };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", () => setFocused(false));
+    return () => {
+      document.removeEventListener("mousedown", () => setFocused(false));
+    };
+  }, []);
+
   return (
-    <label htmlFor="username" onClick={() => setFocused("active")}>
-      <div className={`signUp__inputGroup signUp__inputGroup--${focused}`}>
+    <label htmlFor="text" ref={offClickRef} onClick={() => focusInput("text")}>
+      <div
+        className={`signUp__inputGroup ${
+          focused && "signUp__inputGroup--focused"
+        }`}
+      >
         <span
-          className={`signUp__inputGroup__placeholder signUp__inputGroup__placeholder--${focused}`}
+          className={`signUp__inputGroup__placeholder ${
+            focused || text.length
+              ? "signUp__inputGroup__placeholder--focused"
+              : ""
+          }`}
         >
-          Username
+          {placeholder}
         </span>
-        <span className="signUp__inputGroup__counter">
-          {username.length} / 20
-        </span>
+        {focused && (
+          <span className="signUp__inputGroup__counter">
+            {text.length} / 20
+          </span>
+        )}
         <input
           type="text"
-          id="username"
+          id="text"
           maxlength="20"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         />
       </div>
     </label>

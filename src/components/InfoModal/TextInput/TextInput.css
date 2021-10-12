@@ -6,11 +6,12 @@
   border: 1px solid #aaa;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 25px;
 
   transition: all 250ms ease;
 }
 
-.signUp__inputGroup--active {
+.signUp__inputGroup--focused {
   border-color: var(--twitter-color);
 }
 
@@ -20,12 +21,12 @@
   left: 10px;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #888;
+  color: #777;
 
   transition: all 250ms ease;
 }
 
-.signUp__inputGroup__placeholder--active {
+.signUp__inputGroup__placeholder--focused {
   top: 5px;
   font-size: 14px;
   transform: translateY(0);

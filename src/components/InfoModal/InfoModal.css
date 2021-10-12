@@ -27,6 +27,15 @@
   flex-direction: column;
 }
 
+.infoModal__verifiedWrapper {
+  align-self: center;
+  color: #777 !important;
+}
+
+.infoModal__verifiedCheckbox {
+  color: var(--twitter-color) !important;
+}
+
 .infoModal__submit {
   background-color: var(--twitter-color) !important;
   border: none !important;
