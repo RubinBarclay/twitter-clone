@@ -5,13 +5,16 @@ function TextInput({ text, setText, placeholder }) {
   const [focused, setFocused] = useState(false);
   const offClickRef = useRef();
 
-  const focusInput = (field) => {
-    switch (field) {
-      case "text":
-      case "displayName":
-        setFocused("active");
-    }
-  };
+  // const focusInput = (field) => {
+  //   switch (field) {
+  //     case "text":
+  //     case "displayName":
+  //       setFocused("active");
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   useEffect(() => {
     document.addEventListener("mousedown", () => setFocused(false));
@@ -20,8 +23,10 @@ function TextInput({ text, setText, placeholder }) {
     };
   }, []);
 
+  // PROBLEM IS THAT E.TARGET.VALUE IS NOT RETURNING CURRENT VALUE, YOU MIGHT NEED TO MAKE IT A CONTROLLED INPUT INSTEAD
+
   return (
-    <label htmlFor="text" ref={offClickRef} onClick={() => focusInput("text")}>
+    <label htmlFor="text" ref={offClickRef} onClick={() => setFocused(true)}>
       <div
         className={`signUp__inputGroup ${
           focused && "signUp__inputGroup--focused"
@@ -44,8 +49,8 @@ function TextInput({ text, setText, placeholder }) {
         <input
           type="text"
           id="text"
-          maxlength="20"
-          onChange={(e) => setText(e.target.value)}
+          maxLength="20"
+          onChange={(e) => setText({ username: e.target.value })}
         />
       </div>
     </label>
