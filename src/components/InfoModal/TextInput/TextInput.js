@@ -1,21 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import UserInfoContext from "../../../userInfoContext";
 import "./TextInput.css";
 
-function TextInput({ text, setText, placeholder }) {
+function TextInput({ type, placeholder }) {
   const [focused, setFocused] = useState(false);
+  const { userInfo, setUserInfo } = useContext(UserInfoContext);
   const offClickRef = useRef();
 
-  // const focusInput = (field) => {
-  //   switch (field) {
-  //     case "text":
-  //     case "displayName":
-  //       setFocused("active");
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
-
+  // Listener for when user clicks outside of component
   useEffect(() => {
     document.addEventListener("mousedown", () => setFocused(false));
     return () => {
@@ -23,7 +15,21 @@ function TextInput({ text, setText, placeholder }) {
     };
   }, []);
 
-  // PROBLEM IS THAT E.TARGET.VALUE IS NOT RETURNING CURRENT VALUE, YOU MIGHT NEED TO MAKE IT A CONTROLLED INPUT INSTEAD
+  const setUserInfoHandler = (e) => {
+    setUserInfo((currentInfo) => {
+      if (type === "username") {
+        return {
+          ...currentInfo,
+          username: e.target.value,
+        };
+      } else {
+        return {
+          ...currentInfo,
+          displayName: e.target.value,
+        };
+      }
+    });
+  };
 
   return (
     <label htmlFor="text" ref={offClickRef} onClick={() => setFocused(true)}>
@@ -34,7 +40,7 @@ function TextInput({ text, setText, placeholder }) {
       >
         <span
           className={`signUp__inputGroup__placeholder ${
-            focused || text.length
+            focused || userInfo[type].length
               ? "signUp__inputGroup__placeholder--focused"
               : ""
           }`}
@@ -43,14 +49,14 @@ function TextInput({ text, setText, placeholder }) {
         </span>
         {focused && (
           <span className="signUp__inputGroup__counter">
-            {text.length} / 20
+            {userInfo[type].length} / 20
           </span>
         )}
         <input
           type="text"
           id="text"
           maxLength="20"
-          onChange={(e) => setText({ username: e.target.value })}
+          onChange={setUserInfoHandler}
         />
       </div>
     </label>

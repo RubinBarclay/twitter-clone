@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   const [showModal, setShowModal] = useState(true);
+  // const [userInfo, setUserInfo] = useState("");
   const [userInfo, setUserInfo] = useState({
     username: "",
     displayName: "",
