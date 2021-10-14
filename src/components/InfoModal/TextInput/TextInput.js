@@ -17,16 +17,24 @@ function TextInput({ type, placeholder }) {
 
   const setUserInfoHandler = (e) => {
     setUserInfo((currentInfo) => {
-      if (type === "username") {
-        return {
-          ...currentInfo,
-          username: e.target.value,
-        };
-      } else {
-        return {
-          ...currentInfo,
-          displayName: e.target.value,
-        };
+      switch (type) {
+        case "username":
+          return {
+            ...currentInfo,
+            username: e.target.value,
+          };
+        case "displayName":
+          return {
+            ...currentInfo,
+            displayName: e.target.value,
+          };
+        case "avatarUrl":
+          return {
+            ...currentInfo,
+            avatarUrl: e.target.value,
+          };
+        default:
+          throw new Error("Unrecognised userInfo key");
       }
     });
   };
@@ -47,7 +55,8 @@ function TextInput({ type, placeholder }) {
         >
           {placeholder}
         </span>
-        {focused && (
+        {/* Only show the character count for username and displayName */}
+        {focused && type !== "avatarUrl" && (
           <span className="signUp__inputGroup__counter">
             {userInfo[type].length} / 20
           </span>

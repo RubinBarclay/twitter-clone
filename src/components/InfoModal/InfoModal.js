@@ -17,7 +17,10 @@ function InfoModal({ setShowModal }) {
         <form className="infoModal__form">
           <TextInput type="username" placeholder="Username" />
           <TextInput type="displayName" placeholder="Display name" />
-          // User avatar url optional
+          <TextInput
+            type="avatarUrl"
+            placeholder="Optional: avatar image url"
+          />
           <FormControlLabel
             labelPlacement="start"
             label={<Box sx={{ fontWeight: "bold" }}>Verified?</Box>}
