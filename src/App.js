@@ -12,7 +12,7 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     username: "",
     displayName: "",
-    avatarUrl: "",
+    avatar: "",
     verified: false,
   });
 

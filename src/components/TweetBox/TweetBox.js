@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
+import UserInfoContext from "../../userInfoContext";
 
 function TweetBox({ setPosts }) {
+  const { userInfo } = useContext(UserInfoContext);
   const [tweetText, setTweetText] = useState("");
   const [tweetImage, setTweetImage] = useState("");
 
@@ -16,13 +18,9 @@ function TweetBox({ setPosts }) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        displayName: "Test",
-        username: "testMeister",
-        verified: false,
+        ...userInfo,
         text: tweetText,
         image: tweetImage,
-        avatar:
-          "https://yt3.ggpht.com/ytc/AKedOLRRPY2EpZ4cxSjwaQM5Ealp-Mx9zYXZfAznxa0t=s900-c-k-c0x00ffffff-no-rj",
       }),
     });
     const data = await response.json();
@@ -39,7 +37,7 @@ function TweetBox({ setPosts }) {
     <div className="tweetBox">
       <form onSubmit={createPost}>
         <div className="tweetBox__input">
-          <Avatar src="https://yt3.ggpht.com/ytc/AKedOLRRPY2EpZ4cxSjwaQM5Ealp-Mx9zYXZfAznxa0t=s900-c-k-c0x00ffffff-no-rj" />
+          <Avatar src={userInfo.avatar} />
           <input
             placeholder="What's happening?"
             onChange={(e) => setTweetText(e.target.value)}

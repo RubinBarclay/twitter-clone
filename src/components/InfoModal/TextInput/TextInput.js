@@ -28,10 +28,10 @@ function TextInput({ type, placeholder }) {
             ...currentInfo,
             displayName: e.target.value,
           };
-        case "avatarUrl":
+        case "avatar":
           return {
             ...currentInfo,
-            avatarUrl: e.target.value,
+            avatar: e.target.value,
           };
         default:
           throw new Error("Unrecognised userInfo key");
@@ -56,7 +56,7 @@ function TextInput({ type, placeholder }) {
           {placeholder}
         </span>
         {/* Only show the character count for username and displayName */}
-        {focused && type !== "avatarUrl" && (
+        {focused && type !== "avatar" && (
           <span className="signUp__inputGroup__counter">
             {userInfo[type].length} / 20
           </span>
@@ -64,7 +64,7 @@ function TextInput({ type, placeholder }) {
         <input
           type="text"
           id="text"
-          maxLength="20"
+          maxLength={type !== "avatar" && "20"}
           onChange={setUserInfoHandler}
         />
       </div>
