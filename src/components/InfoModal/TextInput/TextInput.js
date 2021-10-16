@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import UserInfoContext from "../../../userInfoContext";
 import "./TextInput.css";
 
-function TextInput({ type, placeholder }) {
+function TextInput({ type, placeholder, invalid }) {
   const [focused, setFocused] = useState(false);
   const { userInfo, setUserInfo } = useContext(UserInfoContext);
   const offClickRef = useRef();
@@ -43,7 +43,11 @@ function TextInput({ type, placeholder }) {
     <label htmlFor="text" ref={offClickRef} onClick={() => setFocused(true)}>
       <div
         className={`signUp__inputGroup ${
-          focused && "signUp__inputGroup--focused"
+          focused
+            ? "signUp__inputGroup--focused"
+            : invalid
+            ? "signUp__inputGroup--invalid"
+            : ""
         }`}
       >
         <span
@@ -64,7 +68,7 @@ function TextInput({ type, placeholder }) {
         <input
           type="text"
           id="text"
-          maxLength={type !== "avatar" && "20"}
+          maxLength={type !== "avatar" ? "20" : null}
           onChange={setUserInfoHandler}
         />
       </div>

@@ -8,11 +8,15 @@
   cursor: pointer;
   margin-bottom: 25px;
 
-  transition: all 250ms ease;
+  transition: all 150ms ease;
 }
 
 .signUp__inputGroup--focused {
   border-color: var(--twitter-color);
+}
+
+.signUp__inputGroup--invalid {
+  border-color: red;
 }
 
 .signUp__inputGroup__placeholder {
@@ -46,12 +50,16 @@
   top: 60%;
   left: 10px;
   right: 10px;
-  transform: translateY(-50%);
-  height: 35px;
-  padding-left: 0;
-  border: none;
+  transform: translateY(-60%);
+
+  height: 50%;
+  width: 95%;
+  padding-top: 20px;
+  padding-bottom: 5px;
+
   font-size: 20px;
   font-family: inherit;
   background-color: transparent;
+  border: none;
   cursor: pointer;
 }
