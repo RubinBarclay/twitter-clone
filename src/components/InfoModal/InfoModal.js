@@ -46,7 +46,7 @@ function InfoModal({ setShowModal }) {
             control={
               <Checkbox
                 className="infoModal__verifiedCheckbox"
-                onChange={(e) =>
+                onChange={() =>
                   setUserInfo((currentInfo) => ({
                     ...currentInfo,
                     verified: !currentInfo.verified,
